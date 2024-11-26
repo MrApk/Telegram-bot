@@ -8,7 +8,7 @@ import time
 import uuid
 
 RAPIDAPI_HOST = "terabox-downloader-direct-download-link-generator.p.rapidapi.com"
-RAPIDAPI_KEY = process.env.rkey
+RAPIDAPI_KEY = os.environ.get('rkey')
 
 # Configure logging
 logging.basicConfig(
@@ -127,7 +127,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
 def main():
 # Replace these with your credentials
-    TELEGRAM_BOT_TOKEN = process.env.botkey
+    TELEGRAM_BOT_TOKEN = os.environ.get('botkey')
     application = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
 
     application.add_handler(CommandHandler("start", lambda update, context: update.message.reply_text("Send a TeraBox link.")))
